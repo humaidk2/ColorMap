@@ -29,7 +29,7 @@ class colorAssignment:
                         if border == elem["alpha3Code"]:
                             Neighbors = Neighbors + "," + elem["name"]
                 self.neighbors.append(Neighbors)
-                self["alpha2Code"].append(item["alpha2Code"])
+                self.alphaCode.append(item["alpha2Code"])
             self.countries = {}
 
         else:
