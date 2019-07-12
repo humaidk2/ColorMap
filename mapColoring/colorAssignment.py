@@ -16,6 +16,7 @@ class colorAssignment:
             self.countriesList = []
             self.neighbors = []
             self.alphaCode = []
+            self.colors = []
             # filter countries for asian countries
             for item in myCountriesDict:
                 if(item['region'] == "Asia"):
@@ -122,12 +123,13 @@ class colorAssignment:
                     self.countries[country]["color"] = "purple"
                 elif(self.countries[country]["color"] == 4):
                     self.countries[country]["color"] = "yellow"
+                self.colors.append(self.countries[country]["color"])
                 finalOutput.append([country, self.countries[country]["neighbors"], self.countries[country]["assigned"], self.countries[country]["color"]])
                 # df = pd.DataFrame(finalOutput, columns=['country','neighbors', 'assigned', 'color'])
             return {
                 'countries': self.countriesList,
                 'neighbors': self.neighbors,
-                'colors': [country["color"] for country in self.countries],
+                'colors': self.colors,
                 'alpha2Code': self.alphaCode
             }
         else:
