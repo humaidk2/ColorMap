@@ -28,10 +28,11 @@ class colorAssignment:
                         Neighbors = Neighbors + "," + elem["name"]
             curr.append(Neighbors)
             fullInfo.append(curr)
-        print(fullInfo)
+       
         df = pd.DataFrame(fullInfo, columns = ['Name', 'Neighbors'])
         countriesList = df.iloc[:,0].tolist()
         neighbors = df.iloc[:, 1].tolist()
+        print(neighbors)
         countries = {}
 
     else:

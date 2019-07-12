@@ -7,7 +7,7 @@ def home():
     return render_template("index.html")
 
 @app.route("/color")
-def home():
+def color():
 	ca = colorAssignment()
 	ca.formatInput()
 	return ca.runModule()
