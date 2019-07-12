@@ -1,52 +1,29 @@
 import pandas as pd
 import numpy as np
 import random
-# format for each country
-#  india: { neighbors: [pakistan, bangladesh, nepal], color: 'orange'}, pakistan: {neighbors: [india, bla], color: 'red'}
+
+class colorAssignment:
+	
 df = pd.read_excel('input.xlsx')
 countriesList = df.iloc[:,1].tolist()
 neighbors = df.iloc[:, 2].tolist()
 countries = {}
-for idx,country in enumerate(countriesList):
-	countries[country] = {}
-	neighborList = str(neighbors[idx]).split(",")
-	del neighborList[0]
-	countries[country]["neighbors"]= neighborList
-	countries[country]["options"] = [i for i in range(5)]
-	countries[country]["assigned"] = False
+# format for each country
+#  india: { neighbors: [pakistan, bangladesh, nepal], color: 'orange'}, pakistan: {neighbors: [india, bla], color: 'red'}
+def formatInput():
+	for idx,country in enumerate(countriesList):
+		countries[country] = {}
+		neighborList = str(neighbors[idx]).split(",")
+		del neighborList[0]
+		countries[country]["neighbors"]= neighborList
+		countries[country]["options"] = [i for i in range(5)]
+		countries[country]["assigned"] = False
 # have an evaluation function
 # to check number of conflicts
 # fix one conflict
 # re-evaluate number of conflicts
 # if theres an improvement check next conflict
 # if theres no improvement go back and try assigning it to another color
-
-
-
-
-# def getConflicts(conflicts, countries):
-# 	for country in countries.keys():
-# 		for neighbor in countries[country]["neighbors"]:
-# 			if countries[country]["color"] == countries[neighbor]["color"]:
-# 				conflicts.append([country, neighbor])
-
-
-# conflicts = []
-# getConflicts(conflicts, countries)
-# while(len(conflicts) > 0):
-# 	# loop over conflicts change one 
-# 	print(len(conflicts))
-# 	new_list = list(conflicts)
-# 	for country in countries:
-# 		curr = countries[country]["color"]
-# 		countries[country]["color"] = random.randint(0,4)
-# 		conflicts = []
-# 		getConflicts(conflicts, countries)
-# 		if(len(conflicts) < len(new_list)):
-# 			break;
-# 		else:
-# 			countries[country]["color"] = curr;
-# print(countries)
 
 
 def recursive(countries):
@@ -100,26 +77,26 @@ def recursive(countries):
 		countries[currCountry]["assigned"] = False
 		del countries[currCountry]["color"]
 		return False
+def runModule():
+	print("*****************\n\n\n\n\n\n*****************\n")
+	isItPossible = recursive(countries)
+	if isItPossible == True:
+		return "Yeah it's possible"
+		finalOutput = []
+		for country in countries:
+			if(countries[country]["color"] == 0):
+				countries[country]["color"] = "red"
+			elif(countries[country]["color"] == 1):
+				countries[country]["color"] = "blue"
+			elif(countries[country]["color"] == 2):
+				countries[country]["color"] = "green"
+			elif(countries[country]["color"] == 3):
+				countries[country]["color"] = "purple"
+			elif(countries[country]["color"] == 4):
+				countries[country]["color"] = "yellow"
+			finalOutput.append([country, countries[country]["neighbors"], countries[country]["assigned"], countries[country]["color"]])
 
-print("*****************\n\n\n\n\n\n*****************\n")
-isItPossible = recursive(countries)
-if isItPossible == True:
-	print("Yeah it's possible")
-	finalOutput = []
-	for country in countries:
-		if(countries[country]["color"] == 0):
-			countries[country]["color"] = "red"
-		elif(countries[country]["color"] == 1):
-			countries[country]["color"] = "blue"
-		elif(countries[country]["color"] == 2):
-			countries[country]["color"] = "green"
-		elif(countries[country]["color"] == 3):
-			countries[country]["color"] = "purple"
-		elif(countries[country]["color"] == 4):
-			countries[country]["color"] = "yellow"
-		finalOutput.append([country, countries[country]["neighbors"], countries[country]["assigned"], countries[country]["color"]])
-
-	df = pd.DataFrame(finalOutput, columns=['country','neighbors', 'assigned', 'color'])
-	df.to_excel("output.xlsx")
-else:
-	print("Damn Not possible")
+		df = pd.DataFrame(finalOutput, columns=['country','neighbors', 'assigned', 'color'])
+		df.to_excel("output.xlsx")
+	else:
+		return "Damn Not possible"
