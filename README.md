@@ -8,7 +8,7 @@ Technologies being used:
 
 To do:
 * Test flask server with heroku :heavy_check_mark:
-* Add python map coloring code
+* Add python map coloring code:x:
 * Merge map coloring code with data fetching code:x:	
 * Add a little html for inputs:x:	
 * Add loading screen:x:	
