@@ -38,7 +38,6 @@
 		}
 		function printResponse(response) {
 			var myText = JSON.parse(response);
-			document.getElementById('colors').innerHTML = response;
 			var chart = am4core.create("chartdiv", am4maps.MapChart);
 
 			// Set map definition
@@ -49,7 +48,7 @@
 			var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
 
 			// Make map load polygon (like country names) data from GeoJSON
-			polygonSeries.include = ["US", "ES", "FR", "DE", "BE", "NL", "IT", "AT", "GB", "IE", "CH", "LU"];
+			polygonSeries.include = myText["alpha2Code"];
 			polygonSeries.useGeodata = true;
 
 			// Configure series
@@ -63,17 +62,15 @@
 
 			// Add zoom control
 			chart.zoomControl = new am4maps.ZoomControl();
-			polygonSeries.data = [{
-			  "id": "US",
-			  "name": "United States",
-			  "value": 100,
-			  "fill": am4core.color("#F05C5C")
-			}, {
-			  "id": "FR",
-			  "name": "France",
-			  "value": 50,
-			  "fill": am4core.color("#5C5CFF")
-			}];
+			polygonSeries.data = []
+			for(var i = 0;i < myText.countries.length;i++) {
+				polygonSeries.data.append({
+					"id": myText["alpha2Code"][i],
+					"name": myText.countries[i],
+					"value": 50,
+					"fill": am4core.color(myText.colors[i])
+				})
+			}
 			polygonTemplate.propertyFields.fill = "fill";
 		}
 	</script>
