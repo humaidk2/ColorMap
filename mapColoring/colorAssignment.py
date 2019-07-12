@@ -40,7 +40,7 @@ class colorAssignment:
   
 # format for each country
 #  india: { neighbors: [pakistan, bangladesh, nepal], color: 'orange'}, pakistan: {neighbors: [india, bla], color: 'red'}
-    def formatInput():
+    def formatInput(self):
     	for idx,country in enumerate(countriesList):
     		countries[country] = {}
     		neighborList = str(neighbors[idx]).split(",")
@@ -56,7 +56,7 @@ class colorAssignment:
 # if theres no improvement go back and try assigning it to another color
 
 
-    def recursive(countries):
+    def recursive(self, countries):
     	# check if any color options are empty
     	numOfAssigned = 0
     	for country in countries:
@@ -108,7 +108,7 @@ class colorAssignment:
     		del countries[currCountry]["color"]
     		return False
 
-    def runModule():
+    def runModule(self):
     	print("*****************\n\n\n\n\n\n*****************\n")
     	isItPossible = recursive(countries)
     	if isItPossible == True:
