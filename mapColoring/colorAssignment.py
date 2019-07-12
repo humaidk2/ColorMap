@@ -112,7 +112,6 @@ class colorAssignment:
     	print("*****************\n\n\n\n\n\n*****************\n")
     	isItPossible = self.recursive(self.countries)
     	if isItPossible == True:
-    		return "Yeah it's possible"
     		finalOutput = []
     		for country in self.countries:
     			if(self.countries[country]["color"] == 0):
