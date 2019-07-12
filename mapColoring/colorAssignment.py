@@ -3,8 +3,8 @@ import numpy as np
 import random
 
 class colorAssignment:
-	
-    df = pd.read_excel('input.xlsx')
+
+    df = pd.read_excel('./input.xlsx')
     countriesList = df.iloc[:,1].tolist()
     neighbors = df.iloc[:, 2].tolist()
     countries = {}
@@ -97,6 +97,6 @@ def runModule():
 			finalOutput.append([country, countries[country]["neighbors"], countries[country]["assigned"], countries[country]["color"]])
 
 		df = pd.DataFrame(finalOutput, columns=['country','neighbors', 'assigned', 'color'])
-		df.to_excel("output.xlsx")
+		df.to_excel("./output.xlsx")
 	else:
 		return "Damn Not possible"

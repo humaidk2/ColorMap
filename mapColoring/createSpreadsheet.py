@@ -26,6 +26,6 @@ if response:
     print(fullInfo)
     # use pandas to write the info to excel file
     dfObj = pd.DataFrame(fullInfo, columns = ['Name', 'Neighbors'])
-    dfObj.to_excel('input.xlsx')
+    dfObj.to_excel('./input.xlsx')
 else:
     print('An error has occurred.')
