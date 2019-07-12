@@ -10,7 +10,7 @@ def home():
 def home():
 	ca = colorAssignment()
 	ca.formatInput()
-    return ca.runModule()
+	return ca.runModule()
 
 if __name__ == "__main__":
     app.run(debug=True)
