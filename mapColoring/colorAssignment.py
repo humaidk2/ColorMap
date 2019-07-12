@@ -130,4 +130,4 @@ class colorAssignment:
     		df = pd.DataFrame(finalOutput, columns=['country','neighbors', 'assigned', 'color'])
             return finalOutput
     	else:
-    		return "Damn Not possible"
+    		return []
