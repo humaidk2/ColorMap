@@ -4,10 +4,10 @@ import random
 
 class colorAssignment:
 	
-df = pd.read_excel('input.xlsx')
-countriesList = df.iloc[:,1].tolist()
-neighbors = df.iloc[:, 2].tolist()
-countries = {}
+    df = pd.read_excel('input.xlsx')
+    countriesList = df.iloc[:,1].tolist()
+    neighbors = df.iloc[:, 2].tolist()
+    countries = {}
 # format for each country
 #  india: { neighbors: [pakistan, bangladesh, nepal], color: 'orange'}, pakistan: {neighbors: [india, bla], color: 'red'}
 def formatInput():
