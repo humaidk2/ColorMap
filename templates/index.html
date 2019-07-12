@@ -64,7 +64,7 @@
 			chart.zoomControl = new am4maps.ZoomControl();
 			polygonSeries.data = []
 			for(var i = 0;i < myText.countries.length;i++) {
-				polygonSeries.data.append({
+				polygonSeries.data.push({
 					"id": myText["alpha2Code"][i],
 					"name": myText.countries[i],
 					"value": 50,
