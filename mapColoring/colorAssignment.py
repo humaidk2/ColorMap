@@ -125,7 +125,7 @@ class colorAssignment:
                 elif(self.countries[country]["color"] == 4):
                     self.countries[country]["color"] = "yellow"
                 finalOutput.append([country, self.countries[country]["neighbors"], self.countries[country]["assigned"], self.countries[country]["color"]])
-                df = pd.DataFrame(finalOutput, columns=['country','neighbors', 'assigned', 'color'])
+                # df = pd.DataFrame(finalOutput, columns=['country','neighbors', 'assigned', 'color'])
                 return finalOutput
         else:
             return []
