@@ -110,7 +110,7 @@ class colorAssignment:
 
     def runModule(self):
     	print("*****************\n\n\n\n\n\n*****************\n")
-    	isItPossible = recursive(self.countries)
+    	isItPossible = self.recursive(self.countries)
     	if isItPossible == True:
     		return "Yeah it's possible"
     		finalOutput = []
