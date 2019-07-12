@@ -94,7 +94,7 @@ class colorAssignment:
     					deletedOptions.append(neighbor)
     					countries[neighbor]["options"].remove(option)
     			# recurse to the next variable
-    			checkIfFinished = recursive(countries)
+    			checkIfFinished = self.recursive(countries)
     			# check if all colors were succesfully assigned
     			if checkIfFinished == True:
     				return True
