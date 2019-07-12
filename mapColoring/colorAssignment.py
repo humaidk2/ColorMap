@@ -1,13 +1,45 @@
 import pandas as pd
 import numpy as np
 import random
+import requests
+import json
+# get data on name, region, 3 letter code, neighboring countries
 
 class colorAssignment:
 
-    df = pd.read_excel('./input.xlsx')
-    countriesList = df.iloc[:,1].tolist()
-    neighbors = df.iloc[:, 2].tolist()
-    countries = {}
+    response = requests.get('https://restcountries.eu/rest/v2/all?fields=name;region;alpha3Code;borders')
+    if response:
+        print('Success!')
+        myCountriesDict = response.json()
+        myCountries = []
+        fullInfo = []
+        # filter countries for asian countries
+        for item in myCountriesDict:
+            if(item['region'] == "Asia"):
+                myCountries.append(item)
+        for item in myCountries:
+            curr= []
+            curr.append(item["name"])
+            Neighbors = ""
+            # merge all  neighbouring countries
+            for elem in myCountries:
+                for border in item["borders"]:
+                    if border == elem["alpha3Code"]:
+                        Neighbors = Neighbors + "," + elem["name"]
+            curr.append(Neighbors)
+            fullInfo.append(curr)
+        print(fullInfo)
+        # use pandas to write the info to excel file
+        df = pd.DataFrame(fullInfo, columns = ['Name', 'Neighbors'])
+        df.to_excel('./input.xlsx')
+        countriesList = df.iloc[:,1].tolist()
+        neighbors = df.iloc[:, 2].tolist()
+        countries = {}
+
+    else:
+        print('An error has occurred.')
+    
+  
 # format for each country
 #  india: { neighbors: [pakistan, bangladesh, nepal], color: 'orange'}, pakistan: {neighbors: [india, bla], color: 'red'}
 def formatInput():
