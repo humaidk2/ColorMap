@@ -128,5 +128,6 @@ class colorAssignment:
     			finalOutput.append([country, self.countries[country]["neighbors"], self.countries[country]["assigned"], self.countries[country]["color"]])
 
     		df = pd.DataFrame(finalOutput, columns=['country','neighbors', 'assigned', 'color'])
+            return finalOutput
     	else:
     		return "Damn Not possible"
