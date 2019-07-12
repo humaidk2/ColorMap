@@ -7,31 +7,29 @@ import json
 
 class colorAssignment:
     def __init__(self):
-        response = requests.get('https://restcountries.eu/rest/v2/all?fields=name;region;alpha3Code;borders')
+        response = requests.get('https://restcountries.eu/rest/v2/all?fields=name;region;alpha2Code;alpha3Code;borders')
         if response:
             print('Success!')
             myCountriesDict = response.json()
             myCountries = []
             fullInfo = []
+            self.countriesList = []
+            self.neighbors = []
+            self["alpha2Code"] = []
             # filter countries for asian countries
             for item in myCountriesDict:
                 if(item['region'] == "Asia"):
                     myCountries.append(item)
             for item in myCountries:
-                curr= []
-                curr.append(item["name"])
+                self.countriesList.append(item["name"])
                 Neighbors = ""
                 # merge all  neighbouring countries
                 for elem in myCountries:
                     for border in item["borders"]:
                         if border == elem["alpha3Code"]:
                             Neighbors = Neighbors + "," + elem["name"]
-                curr.append(Neighbors)
-                fullInfo.append(curr)
-           
-            df = pd.DataFrame(fullInfo, columns = ['Name', 'Neighbors'])
-            self.countriesList = df.iloc[:,0].tolist()
-            self.neighbors = df.iloc[:, 1].tolist()
+                self.neighbors.append(Neighbors)
+                self["alpha2Code"].append(item["alpha2Code"])
             self.countries = {}
 
         else:
@@ -126,6 +124,11 @@ class colorAssignment:
                     self.countries[country]["color"] = "yellow"
                 finalOutput.append([country, self.countries[country]["neighbors"], self.countries[country]["assigned"], self.countries[country]["color"]])
                 # df = pd.DataFrame(finalOutput, columns=['country','neighbors', 'assigned', 'color'])
-                return finalOutput
+            return {
+                'countries': self.countriesList,
+                'neighbors': self.neighbors,
+                'colors': [country["color"] for country in countries],
+                'alpha2Code': self.alpha2Code
+            }
         else:
-            return []
+            return {}

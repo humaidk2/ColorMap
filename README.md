@@ -8,9 +8,9 @@ Technologies being used:
 
 To do:
 * Test flask server with heroku :heavy_check_mark:
-* Add python map coloring code:x:
-* Merge map coloring code with data fetching code:x:	
-* Add a little html for inputs:x:	
+* Add python map coloring code:heavy_check_mark:
+* Merge map coloring code with data fetching code:heavy_check_mark:	
+* Add a little html for inputs:heavy_check_mark:	
 * Add loading screen:x:	
 * Connect all sides together:x:	
 * Deploy to Heroku:x:	
