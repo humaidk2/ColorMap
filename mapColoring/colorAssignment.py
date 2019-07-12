@@ -29,10 +29,9 @@ class colorAssignment:
             curr.append(Neighbors)
             fullInfo.append(curr)
         print(fullInfo)
-        # use pandas to write the info to excel file
         df = pd.DataFrame(fullInfo, columns = ['Name', 'Neighbors'])
-        countriesList = df.iloc[:,1].tolist()
-        neighbors = df.iloc[:, 2].tolist()
+        countriesList = df.iloc[:,0].tolist()
+        neighbors = df.iloc[:, 1].tolist()
         countries = {}
 
     else:
