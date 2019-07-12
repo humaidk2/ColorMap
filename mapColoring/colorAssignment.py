@@ -31,7 +31,6 @@ class colorAssignment:
         print(fullInfo)
         # use pandas to write the info to excel file
         df = pd.DataFrame(fullInfo, columns = ['Name', 'Neighbors'])
-        df.to_excel('./input.xlsx')
         countriesList = df.iloc[:,1].tolist()
         neighbors = df.iloc[:, 2].tolist()
         countries = {}
