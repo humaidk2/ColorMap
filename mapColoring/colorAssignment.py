@@ -114,7 +114,7 @@ class colorAssignment:
             for country in self.countries:
                 if(self.countries[country]["color"] == 0):
                     self.countries[country]["color"] = "red"
-                elif(countries[country]["color"] == 1):
+                elif(self.countries[country]["color"] == 1):
                     self.countries[country]["color"] = "blue"
                 elif(self.countries[country]["color"] == 2):
                     self.countries[country]["color"] = "green"
