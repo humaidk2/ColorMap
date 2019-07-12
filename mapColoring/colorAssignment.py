@@ -127,7 +127,7 @@ class colorAssignment:
             return {
                 'countries': self.countriesList,
                 'neighbors': self.neighbors,
-                'colors': [country["color"] for country in countries],
+                'colors': [country["color"] for country in self.countries],
                 'alpha2Code': self.alphaCode
             }
         else:
