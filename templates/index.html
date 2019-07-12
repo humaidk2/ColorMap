@@ -5,5 +5,22 @@
 </head>
 <body>
 	<h1>Please work</h1>
+	<button onclick="getColors(printResponse)"></button>
+	<p id="colors"></p>
+	<script type="text/javascript">
+		function getColors(callback) {
+			var xmlHttp = new XMLHttpRequest();
+	        xmlHttp.onreadystatechange = function() { 
+	            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+	                callback(xmlHttp.responseText);
+	        }
+	        xmlHttp.open("GET", "./colors", true); // true for asynchronous 
+	        xmlHttp.send(null);
+		}
+		function printResponse(response) {
+			var myText = JSON.parse(response);
+			document.getElementById('colors').innerHTML = response;
+		}
+	</script>
 </body>
 </html>
