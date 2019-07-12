@@ -15,7 +15,7 @@ class colorAssignment:
             fullInfo = []
             self.countriesList = []
             self.neighbors = []
-            self["alpha2Code"] = []
+            self.alphaCode = []
             # filter countries for asian countries
             for item in myCountriesDict:
                 if(item['region'] == "Asia"):
@@ -128,7 +128,7 @@ class colorAssignment:
                 'countries': self.countriesList,
                 'neighbors': self.neighbors,
                 'colors': [country["color"] for country in countries],
-                'alpha2Code': self.alpha2Code
+                'alpha2Code': self.alphaCode
             }
         else:
             return {}
