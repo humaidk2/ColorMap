@@ -7,14 +7,13 @@ Technologies being used:
 * AM4CHARTS(JS library)
 
 To do:
-* Test flask server with heroku 
-![alt text](https://images.vexels.com/media/users/3/157932/isolated/lists/951a617272553f49e75548e212ed947f-curved-check-mark-icon.png "Tick")
+* Test flask server with heroku :heavy_check_mark:
 * Add python map coloring code
-* Merge map coloring code with data fetching code
-* Add a little html for inputs
-* Add loading screen
-* Connect all sides together
-* Deploy to Heroku
+* Merge map coloring code with data fetching code:x:	
+* Add a little html for inputs:x:	
+* Add loading screen:x:	
+* Connect all sides together:x:	
+* Deploy to Heroku:x:	
 
 I can do this:smiley:
 
