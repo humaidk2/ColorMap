@@ -6,48 +6,48 @@ import json
 # get data on name, region, 3 letter code, neighboring countries
 
 class colorAssignment:
+    def __init__(self):
+        response = requests.get('https://restcountries.eu/rest/v2/all?fields=name;region;alpha3Code;borders')
+        if response:
+            print('Success!')
+            myCountriesDict = response.json()
+            myCountries = []
+            fullInfo = []
+            # filter countries for asian countries
+            for item in myCountriesDict:
+                if(item['region'] == "Asia"):
+                    myCountries.append(item)
+            for item in myCountries:
+                curr= []
+                curr.append(item["name"])
+                Neighbors = ""
+                # merge all  neighbouring countries
+                for elem in myCountries:
+                    for border in item["borders"]:
+                        if border == elem["alpha3Code"]:
+                            Neighbors = Neighbors + "," + elem["name"]
+                curr.append(Neighbors)
+                fullInfo.append(curr)
+           
+            df = pd.DataFrame(fullInfo, columns = ['Name', 'Neighbors'])
+            self.countriesList = df.iloc[:,0].tolist()
+            self.neighbors = df.iloc[:, 1].tolist()
+            self.countries = {}
 
-    response = requests.get('https://restcountries.eu/rest/v2/all?fields=name;region;alpha3Code;borders')
-    if response:
-        print('Success!')
-        myCountriesDict = response.json()
-        myCountries = []
-        fullInfo = []
-        # filter countries for asian countries
-        for item in myCountriesDict:
-            if(item['region'] == "Asia"):
-                myCountries.append(item)
-        for item in myCountries:
-            curr= []
-            curr.append(item["name"])
-            Neighbors = ""
-            # merge all  neighbouring countries
-            for elem in myCountries:
-                for border in item["borders"]:
-                    if border == elem["alpha3Code"]:
-                        Neighbors = Neighbors + "," + elem["name"]
-            curr.append(Neighbors)
-            fullInfo.append(curr)
-       
-        df = pd.DataFrame(fullInfo, columns = ['Name', 'Neighbors'])
-        countriesList = df.iloc[:,0].tolist()
-        neighbors = df.iloc[:, 1].tolist()
-        countries = {}
-
-    else:
-        print('An error has occurred.')
+        else:
+            print('An error has occurred.')
     
   
 # format for each country
 #  india: { neighbors: [pakistan, bangladesh, nepal], color: 'orange'}, pakistan: {neighbors: [india, bla], color: 'red'}
     def formatInput(self):
-    	for idx,country in enumerate(countriesList):
-    		countries[country] = {}
-    		neighborList = str(neighbors[idx]).split(",")
+    	for idx,country in enumerate(self.countriesList):
+    		self.countries[country] = {}
+    		neighborList = str(self.neighbors[idx]).split(",")
     		del neighborList[0]
-    		countries[country]["neighbors"]= neighborList
-    		countries[country]["options"] = [i for i in range(5)]
-    		countries[country]["assigned"] = False
+    		self.countries[country]["neighbors"]= neighborList
+    		self.countries[country]["options"] = [i for i in range(5)]
+    		self.countries[country]["assigned"] = False
 # have an evaluation function
 # to check number of conflicts
 # fix one conflict
@@ -110,22 +110,22 @@ class colorAssignment:
 
     def runModule(self):
     	print("*****************\n\n\n\n\n\n*****************\n")
-    	isItPossible = recursive(countries)
+    	isItPossible = recursive(self.countries)
     	if isItPossible == True:
     		return "Yeah it's possible"
     		finalOutput = []
-    		for country in countries:
-    			if(countries[country]["color"] == 0):
-    				countries[country]["color"] = "red"
+    		for country in self.countries:
+    			if(self.countries[country]["color"] == 0):
+    				self.countries[country]["color"] = "red"
     			elif(countries[country]["color"] == 1):
-    				countries[country]["color"] = "blue"
-    			elif(countries[country]["color"] == 2):
-    				countries[country]["color"] = "green"
-    			elif(countries[country]["color"] == 3):
-    				countries[country]["color"] = "purple"
-    			elif(countries[country]["color"] == 4):
-    				countries[country]["color"] = "yellow"
-    			finalOutput.append([country, countries[country]["neighbors"], countries[country]["assigned"], countries[country]["color"]])
+    				self.countries[country]["color"] = "blue"
+    			elif(self.countries[country]["color"] == 2):
+    				self.countries[country]["color"] = "green"
+    			elif(self.countries[country]["color"] == 3):
+    				self.countries[country]["color"] = "purple"
+    			elif(self.countries[country]["color"] == 4):
+    				self.countries[country]["color"] = "yellow"
+    			finalOutput.append([country, self.countries[country]["neighbors"], self.countries[country]["assigned"], self.countries[country]["color"]])
 
     		df = pd.DataFrame(finalOutput, columns=['country','neighbors', 'assigned', 'color'])
     	else:
