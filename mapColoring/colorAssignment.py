@@ -128,6 +128,5 @@ def runModule():
 			finalOutput.append([country, countries[country]["neighbors"], countries[country]["assigned"], countries[country]["color"]])
 
 		df = pd.DataFrame(finalOutput, columns=['country','neighbors', 'assigned', 'color'])
-		df.to_excel("./output.xlsx")
 	else:
 		return "Damn Not possible"
