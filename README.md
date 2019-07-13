@@ -11,9 +11,9 @@ To do:
 * Add python map coloring code:heavy_check_mark:
 * Merge map coloring code with data fetching code:heavy_check_mark:	
 * Add a little html for inputs:heavy_check_mark:	
-* Add loading screen:x:	
-* Connect all sides together:x:	
-* Deploy to Heroku:x:	
+* Add loading screen:x:
+* Connect all sides together:heavy_check_mark:
+* Deploy to Heroku:heavy_check_mark:	
 
 I can do this:smiley:
 

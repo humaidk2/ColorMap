@@ -14,17 +14,80 @@
 		body,html{
 			height: 100%;
 			width: 100%;
+			background: black;
+			color: #fffdd0;
+		}
+		.header1{
+			text-align: center;
 		}
 		#chartdiv {
 		  width: 100%;
 		  height: 98vh;
 		}
+		.container{
+			height: 100%;
+			width: 100%;
+			background: white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.component{
+			height: 50%;
+			width: 50%;
+			display: flex;
+			background: black;
+			flex-direction: column;
+			align-items: center;
+		}
+		.header1{
+			flex: 1 1 0;
+		}
+		.button-list{
+			width: 100%;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			flex: 1 1 0;
+			background: red;
+		}
+		.btn{
+			display: flex;
+		}
+		button{
+			width: 140px;
+			height: 50px;
+		}
+		button:hover{
+			background: red;
+			border-color: red;
+		}
+		.nColors{
+
+		}
+
 	</style>
 </head>
 <body>
-	<h1>Please work</h1>
-	<button onclick="getColors(printResponse)">Asia</button>
-	<p id="colors"></p>
+	
+	
+	<div class="container">
+		<div class="component">
+			<div class="header"><h1 class="header1">Please work</h1></div>
+			<div class="button-list">
+				<div class="btn"><button onclick="getColors(printResponse)">Asia</button></div>
+				<div class="btn"><button onclick="getColors(printResponse)">Asia</button></div>
+			</div>
+			<div class="button-list">
+				<div class="btn"><button onclick="getColors(printResponse)">Asia</button></div>
+				<div class="btn"><button onclick="getColors(printResponse)">Asia</button></div>
+			</div>
+			<div class="nColorsDiv">
+				<input type="text" id="nColors" name="nColors">
+			</div>
+		</div>
+	</div>
+	
 	<div id="chartdiv"></div>
 	<script type="text/javascript">
 		function getColors(callback) {
