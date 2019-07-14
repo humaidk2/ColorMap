@@ -8,8 +8,8 @@ def home():
 
 @app.route("/color", methods = ["GET"])
 def color():
-	country = request.args.get("continent")
-	ca = colorAssignment()
+	continent = request.args["continent"]
+	ca = colorAssignment(continent)
 	ca.formatInput()
 	return ca.runModule()
 
