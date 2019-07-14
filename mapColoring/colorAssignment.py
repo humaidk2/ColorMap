@@ -39,13 +39,13 @@ class colorAssignment:
   
 # format for each country
 #  india: { neighbors: [pakistan, bangladesh, nepal], color: 'orange'}, pakistan: {neighbors: [india, bla], color: 'red'}
-    def formatInput(self):
+    def formatInput(self, numOfCOlors):
         for idx,country in enumerate(self.countriesList):
             self.countries[country] = {}
             neighborList = str(self.neighbors[idx]).split(",")
             del neighborList[0]
             self.countries[country]["neighbors"]= neighborList
-            self.countries[country]["options"] = [i for i in range(5)]
+            self.countries[country]["options"] = [i for i in range(int(numOfCOlors))]
             self.countries[country]["assigned"] = False
 # have an evaluation function
 # to check number of conflicts

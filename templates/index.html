@@ -93,12 +93,13 @@
 	
 	<script type="text/javascript">
 		function getColors(callback, continent) {
+			var nColors = document.getElementById('nColors').value;
 			var xmlHttp = new XMLHttpRequest();
 	        xmlHttp.onreadystatechange = function() { 
 	            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
 	                callback(xmlHttp.responseText);
 	        }
-	        xmlHttp.open("GET", "https://salty-cliffs-12768.herokuapp.com/color?continent=" + continent, true); // true for asynchronous 
+	        xmlHttp.open("GET", "https://salty-cliffs-12768.herokuapp.com/color?continent=" + continent + "&nColors=" + nColors, true); // true for asynchronous 
 	        xmlHttp.send(null);
 		}
 		function printResponse(response) {
