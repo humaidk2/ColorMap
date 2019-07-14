@@ -6,8 +6,9 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-@app.route("/color")
+@app.route("/color", methods = ["GET"])
 def color():
+	country = request.args.get("continent")
 	ca = colorAssignment()
 	ca.formatInput()
 	return ca.runModule()

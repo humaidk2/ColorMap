@@ -45,10 +45,10 @@
 		}
 		.button-list{
 			width: 100%;
+			height: 20%;
 			display: flex;
 			justify-content: space-around;
 			align-items: center;
-			flex: 1 1 0;
 			background: red;
 		}
 		.btn{
@@ -75,15 +75,15 @@
 		<div class="component">
 			<div class="header"><h1 class="header1">Please work</h1></div>
 			<div class="button-list">
-				<div class="btn"><button onclick="getColors(printResponse)">Asia</button></div>
-				<div class="btn"><button onclick="getColors(printResponse)">Asia</button></div>
+				<div class="btn"><button onclick="getColors(printResponse, 'Asia')">Asia</button></div>
+				<div class="btn"><button onclick="getColors(printResponse, , 'Europe')">Europe</button></div>
 			</div>
 			<div class="button-list">
-				<div class="btn"><button onclick="getColors(printResponse)">Asia</button></div>
-				<div class="btn"><button onclick="getColors(printResponse)">Asia</button></div>
+				<div class="btn"><button onclick="getColors(printResponse, 'SouthAmerica')">South America</button></div>
+				<div class="btn"><button onclick="getColors(printResponse, 'NorthAmerica')">North America</button></div>
 			</div>
 			<div class="nColorsDiv">
-				<input type="text" id="nColors" name="nColors">
+				<label>Num Of Colors<input type="text" id="nColors" name="nColors"></label>
 			</div>
 		</div>
 		<div id="chartdiv"></div>
@@ -91,13 +91,13 @@
 	
 	
 	<script type="text/javascript">
-		function getColors(callback) {
+		function getColors(callback, continent) {
 			var xmlHttp = new XMLHttpRequest();
 	        xmlHttp.onreadystatechange = function() { 
 	            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
 	                callback(xmlHttp.responseText);
 	        }
-	        xmlHttp.open("GET", "https://salty-cliffs-12768.herokuapp.com/color", true); // true for asynchronous 
+	        xmlHttp.open("GET", "https://salty-cliffs-12768.herokuapp.com/color?continent=" + continent, true); // true for asynchronous 
 	        xmlHttp.send(null);
 		}
 		function printResponse(response) {

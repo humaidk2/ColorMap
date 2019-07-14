@@ -6,7 +6,7 @@ import json
 # get data on name, region, 3 letter code, neighboring countries
 
 class colorAssignment:
-    def __init__(self):
+    def __init__(self, continent):
         response = requests.get('https://restcountries.eu/rest/v2/all?fields=name;region;alpha2Code;alpha3Code;borders')
         if response:
             print('Success!')
@@ -19,7 +19,7 @@ class colorAssignment:
             self.colors = []
             # filter countries for asian countries
             for item in myCountriesDict:
-                if(item['region'] == "Asia"):
+                if(item['region'] == continent):
                     myCountries.append(item)
             for item in myCountries:
                 self.countriesList.append(item["name"])
