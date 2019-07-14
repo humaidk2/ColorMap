@@ -123,6 +123,12 @@ class colorAssignment:
                     self.countries[country]["color"] = "purple"
                 elif(self.countries[country]["color"] == 4):
                     self.countries[country]["color"] = "yellow"
+                elif(self.countries[country]["color"] == 5):
+                    self.countries[country]["color"] = "pink"
+                elif(self.countries[country]["color"] == 6):
+                    self.countries[country]["color"] = "brown"
+                elif(self.countries[country]["color"] == 7):
+                    self.countries[country]["color"] = "orange"
                 self.colors.append(self.countries[country]["color"])
                 finalOutput.append([country, self.countries[country]["neighbors"], self.countries[country]["assigned"], self.countries[country]["color"]])
                 # df = pd.DataFrame(finalOutput, columns=['country','neighbors', 'assigned', 'color'])
