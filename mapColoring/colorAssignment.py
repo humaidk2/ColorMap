@@ -42,7 +42,7 @@ class colorAssignment:
     def formatInput(self, numOfCOlors):
         for idx,country in enumerate(self.countriesList):
             self.countries[country] = {}
-            neighborList = str(self.neighbors[idx]).split(",")
+            neighborList = str(self.neighbors[idx].encode('utf-8')).split(",")
             del neighborList[0]
             self.countries[country]["neighbors"]= neighborList
             self.countries[country]["options"] = [i for i in range(int(numOfCOlors))]
