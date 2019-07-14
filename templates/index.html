@@ -29,12 +29,12 @@
 			width: 100%;
 			background: white;
 			display: flex;
-			justify-content: center;
+			justify-content: flex-start;
 			align-items: center;
 		}
 		.component{
-			height: 50%;
-			width: 50%;
+			height: 100%;
+			width: 20%;
 			display: flex;
 			background: black;
 			flex-direction: column;
@@ -55,7 +55,7 @@
 			display: flex;
 		}
 		button{
-			width: 140px;
+			width: 60px;
 			height: 50px;
 		}
 		button:hover{
@@ -86,9 +86,10 @@
 				<input type="text" id="nColors" name="nColors">
 			</div>
 		</div>
+		<div id="chartdiv"></div>
 	</div>
 	
-	<div id="chartdiv"></div>
+	
 	<script type="text/javascript">
 		function getColors(callback) {
 			var xmlHttp = new XMLHttpRequest();
