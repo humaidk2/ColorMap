@@ -113,8 +113,8 @@
 		}
 		function printResponse(response) {
 			var myText = JSON.parse(response);
-			document.getElementById('numOfNodes').innerHTML = myText.stats.numNodes;
-			document.getElementById('numOfNodesDeleted').innerHTML = myText.stats.numNodesDeleted;
+			document.getElementById('numOfNodes').innerHTML = myText.stats.numOfNodes;
+			document.getElementById('numOfNodesDeleted').innerHTML = myText.stats.numOfNodesDeleted;
 			var chart = am4core.create("chartdiv", am4maps.MapChart);
 
 			// Set map definition
