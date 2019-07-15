@@ -7,6 +7,8 @@ import json
 
 class colorAssignment:
     def __init__(self, continent):
+        self.numOfNodes = 1
+        self.numOfNodesDeleted = 0
         response = requests.get('https://restcountries.eu/rest/v2/all?fields=name;region;alpha2Code;alpha3Code;borders')
         if response:
             print('Success!')
@@ -92,8 +94,10 @@ class colorAssignment:
                     if countries[currCountry]["color"] in countries[neighbor]["options"]:
                         deletedOptions.append(neighbor)
                         countries[neighbor]["options"].remove(option)
+                        self.numOfNodesDeleted += 1
                 # recurse to the next variable
                 checkIfFinished = self.recursive(countries)
+                self.numOfNodes += 1
                 # check if all colors were succesfully assigned
                 if checkIfFinished == True:
                     return True
@@ -136,7 +140,11 @@ class colorAssignment:
                 'countries': self.countriesList,
                 'neighbors': self.neighbors,
                 'colors': self.colors,
-                'alpha2Code': self.alphaCode
+                'alpha2Code': self.alphaCode,
+                'stats': {
+                    'numOfNodes': self.numOfNodes,
+                    'numOfNodesDeleted' : self.numOfNodesDeleted
+                }
             }
         else:
             return {}
