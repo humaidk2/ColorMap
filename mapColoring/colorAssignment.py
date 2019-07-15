@@ -9,6 +9,7 @@ class colorAssignment:
     def __init__(self, continent):
         self.numOfNodes = 1
         self.numOfNodesDeleted = 0
+        self.numOfTimesBackTracking = 0
         response = requests.get('https://restcountries.eu/rest/v2/all?fields=name;region;alpha2Code;alpha3Code;borders')
         if response:
             print('Success!')
@@ -107,6 +108,7 @@ class colorAssignment:
                 else:
                     for deletedOption in deletedOptions:
                         countries[deletedOption]["options"].append(countries[currCountry]["color"])
+                self.numOfTimesBackTracking += 1
             countries[currCountry]["assigned"] = False
             del countries[currCountry]["color"]
             return False
@@ -143,7 +145,8 @@ class colorAssignment:
                 'alpha2Code': self.alphaCode,
                 'stats': {
                     'numOfNodes': self.numOfNodes,
-                    'numOfNodesDeleted' : self.numOfNodesDeleted
+                    'numOfNodesDeleted' : self.numOfNodesDeleted,
+                    'numOfTimesBackTracking' : self.numOfTimesBackTracking
                 }
             }
         else:
