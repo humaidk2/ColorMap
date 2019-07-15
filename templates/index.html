@@ -91,8 +91,8 @@
 			</div>
 			<div class="statistics">
 				<ul>
-					<li id="numNodes"></li>
-					<li id="numNodesDeleted"></li>
+					<li id="numOfNodes"></li>
+					<li id="numOfNodesDeleted"></li>
 				</ul>
 			</div>
 		</div>
@@ -113,8 +113,8 @@
 		}
 		function printResponse(response) {
 			var myText = JSON.parse(response);
-			document.getElementById('numNodes').innerHTML = myText.stats.numNodes;
-			document.getElementById('numNodesDeleted').innerHTML = myText.stats.numNodesDeleted;
+			document.getElementById('numOfNodes').innerHTML = myText.stats.numNodes;
+			document.getElementById('numOfNodesDeleted').innerHTML = myText.stats.numNodesDeleted;
 			var chart = am4core.create("chartdiv", am4maps.MapChart);
 
 			// Set map definition
