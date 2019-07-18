@@ -22,6 +22,7 @@ class colorAssignment:
             self.neighbors = []
             self.alphaCode = []
             self.colors = []
+            self.continent = continent
             # filter countries for asian countries
             for item in myCountriesDict:
                 if(item['region'] == continent or continent == "World"):
@@ -44,7 +45,7 @@ class colorAssignment:
 # format for each country
 #   countries = [{"name":"india", "neighbors": ["pakistan", "bangladesh", "nepal"], "options": ["red", "green", "blue"], "color": 'orange', "isAssigned": True}, {"name": "pakistan","neighbors": ["india", "bla"], "options": [ "green", "blue"], "isAssigned": False}}
     def formatInput(self, numOfColors):
-        self.numOfCOlors = numOfColors
+        self.numOfColors = numOfColors
         for idx,country in enumerate(self.countriesList):
             currCountry = {}
             currCountry["name"] = country
@@ -158,7 +159,8 @@ class colorAssignment:
                     'numOfTimesBackTracking' : self.numOfTimesBackTracking,
                     'numOfCountries': len(self.countriesList),
                     'numOfColors': self.numOfColors,
-                    'isItPossible': True
+                    'isItPossible': True,
+                    'region': self.continent
                 }
             }
         else:
@@ -168,6 +170,7 @@ class colorAssignment:
                     'numOfTimesBackTracking' : self.numOfTimesBackTracking,
                     'numOfCountries': len(self.countriesList),
                     'numOfColors': self.numOfColors,
-                    'isItPossible': False
+                    'isItPossible': False,
+                    'region': self.continent
                     }
                 }

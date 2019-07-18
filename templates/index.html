@@ -183,6 +183,7 @@
 					<li id="numOfCountries">Num of countries: </li>
 					<li id="numOfColors">Num of Times Colors: </li>
 					<li id="isItPossible">Is it possible with 0 colors: </li>
+					<li id="region">Region: </li>
 				</ul>
 			</div>
 		</div>
@@ -268,7 +269,7 @@
 			document.getElementById('numOfCountries').innerHTML = "Num of countries: " + myText.stats.numOfCountries;
 			document.getElementById('numOfColors').innerHTML = "Num of Times Colors: " + myText.stats.numOfColors;
 			document.getElementById('isItPossible').innerHTML = "Is it possible with : " + myText.stats.numOfColors + " colors:" +  myText.stats.isItPossible;
-			var chart = am4core.create("chartdiv", am4maps.MapChart);
+			document.getElementById('region').innerHTML = "Region: " + myText.stats.region			var chart = am4core.create("chartdiv", am4maps.MapChart);
 
 			// Set map definition
 			chart.geodata = am4geodata_worldLow;
