@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ok I'm here now what</title>
+	<title>Map Coloring</title>
 	<script src="https://www.amcharts.com/lib/4/core.js"></script>
 	<script src="https://www.amcharts.com/lib/4/maps.js"></script>
 	<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-160/waSchools.js"></script>
@@ -269,7 +269,8 @@
 			document.getElementById('numOfCountries').innerHTML = "Num of countries: " + myText.stats.numOfCountries;
 			document.getElementById('numOfColors').innerHTML = "Num of Times Colors: " + myText.stats.numOfColors;
 			document.getElementById('isItPossible').innerHTML = "Is it possible with : " + myText.stats.numOfColors + " colors:" +  myText.stats.isItPossible;
-			document.getElementById('region').innerHTML = "Region: " + myText.stats.region			var chart = am4core.create("chartdiv", am4maps.MapChart);
+			document.getElementById('region').innerHTML = "Region: " + myText.stats.region;
+			var chart = am4core.create("chartdiv", am4maps.MapChart);
 
 			// Set map definition
 			chart.geodata = am4geodata_worldLow;
