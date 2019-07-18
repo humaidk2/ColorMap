@@ -29,7 +29,6 @@ class colorAssignment:
             myCountries.sort(key=self.neighborSort, reverse=True)
             for item in myCountries:
                 self.countriesList.append(item["name"].replace(",",""))
-                print(item["name"].replace(",",""))
                 Neighbors = ""
                 # merge all  neighbouring countries
                 for elem in myCountries:
