@@ -41,7 +41,7 @@ class colorAssignment:
     
   
 # format for each country
-#  india: { neighbors: [pakistan, bangladesh, nepal], color: 'orange'}, pakistan: {neighbors: [india, bla], color: 'red'}
+#   countries = {"india": { "neighbors": ["pakistan", "bangladesh", "nepal"], "options": ["red", "green", "blue"], "color": 'orange', "isAssigned": True}, "pakistan": {"neighbors": ["india", "bla"], "options": [ "green", "blue"], "isAssigned": False}}
     def formatInput(self, numOfCOlors):
         for idx,country in enumerate(self.countriesList):
             self.countries[country] = {}
@@ -50,14 +50,16 @@ class colorAssignment:
             self.countries[country]["neighbors"]= neighborList
             self.countries[country]["options"] = [i for i in range(int(numOfCOlors))]
             self.countries[country]["assigned"] = False
-# have an evaluation function
-# to check number of conflicts
-# fix one conflict
-# re-evaluate number of conflicts
-# if theres an improvement check next conflict
-# if theres no improvement go back and try assigning it to another color
 
 
+# return false(try anothe color) if theres any conflicts in the assigned colors
+# return false(try anothe color)  if any options are empty(no option available)(conflict)
+# return true if all colors have successfully assigned
+# assign a color to any unassigned country
+# remove that color from neighbours and recurse
+# return true if recursion succeeds
+# try next color if recursion fails
+# return false if no other options left
     def recursive(self, countries):
         # check if any color options are empty
         numOfAssigned = 0
