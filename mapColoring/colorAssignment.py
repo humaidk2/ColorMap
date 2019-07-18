@@ -42,15 +42,16 @@ class colorAssignment:
             print('An error has occurred.')
     
 # format for each country
-#   countries = {"india": { "neighbors": ["pakistan", "bangladesh", "nepal"], "options": ["red", "green", "blue"], "color": 'orange', "isAssigned": True}, "pakistan": {"neighbors": ["india", "bla"], "options": [ "green", "blue"], "isAssigned": False}}
-    def formatInput(self, numOfCOlors):
+#   countries = [{"name":"india", "neighbors": ["pakistan", "bangladesh", "nepal"], "options": ["red", "green", "blue"], "color": 'orange', "isAssigned": True}, {"name": "pakistan","neighbors": ["india", "bla"], "options": [ "green", "blue"], "isAssigned": False}}
+    def formatInput(self, numOfColors):
+        self.numOfCOlors = numOfColors
         for idx,country in enumerate(self.countriesList):
             currCountry = {}
             currCountry["name"] = country
             neighborList = str(self.neighbors[idx]).split(",")
             del neighborList[0]
             currCountry["neighbors"]= neighborList
-            currCountry["options"] = [i for i in range(int(numOfCOlors))]
+            currCountry["options"] = [i for i in range(int(numOfColors))]
             currCountry["assigned"] = False
             self.countries.append(currCountry)
 
@@ -154,13 +155,19 @@ class colorAssignment:
                 'stats': {
                     'numOfNodes': self.numOfNodes,
                     'numOfNodesDeleted' : self.numOfNodesDeleted,
-                    'numOfTimesBackTracking' : self.numOfTimesBackTracking
+                    'numOfTimesBackTracking' : self.numOfTimesBackTracking,
+                    'numOfCountries': len(self.countriesList),
+                    'numOfColors': self.numOfColors,
+                    'isItPossible': True
                 }
             }
         else:
             return {'stats': {
                     'numOfNodes': self.numOfNodes,
                     'numOfNodesDeleted' : self.numOfNodesDeleted,
-                    'numOfTimesBackTracking' : self.numOfTimesBackTracking
+                    'numOfTimesBackTracking' : self.numOfTimesBackTracking,
+                    'numOfCountries': len(self.countriesList),
+                    'numOfColors': self.numOfColors,
+                    'isItPossible': False
                     }
                 }

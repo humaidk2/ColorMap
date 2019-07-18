@@ -180,6 +180,9 @@
 					<li id="numOfNodes">Num of Nodes: </li>
 					<li id="numOfNodesDeleted">Num of Nodes deleted: </li>
 					<li id="numOfTimesBackTracking">Num of Times Back tracking: </li>
+					<li id="numOfCountries">Num of countries: </li>
+					<li id="numOfColors">Num of Times Colors: </li>
+					<li id="isItPossible">Is it possible with 0 colors: </li>
 				</ul>
 			</div>
 		</div>
@@ -262,6 +265,9 @@
 			document.getElementById('numOfNodes').innerHTML = "Num of Nodes: " + myText.stats.numOfNodes;
 			document.getElementById('numOfNodesDeleted').innerHTML = "Num of Nodes deleted: " + myText.stats.numOfNodesDeleted;
 			document.getElementById('numOfTimesBackTracking').innerHTML = "Num of Times Back tracking: " + myText.stats.numOfTimesBackTracking;
+			document.getElementById('numOfCountries').innerHTML = "Num of countries: " + myText.stats.numOfCountries;
+			document.getElementById('numOfColors').innerHTML = "Num of Times Colors: " + myText.stats.numOfColors;
+			document.getElementById('isItPossible').innerHTML = "Is it possible with : " + myText.stats.numOfColors + " colors:"  myText.stats.isItPossible;
 			var chart = am4core.create("chartdiv", am4maps.MapChart);
 
 			// Set map definition
