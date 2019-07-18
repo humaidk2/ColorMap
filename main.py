@@ -8,14 +8,11 @@ def home():
 
 @app.route("/color", methods = ["GET"])
 def color():
-	def generate():
-		continent = request.args["continent"]
-		nColors = request.args["nColors"]
-		ca = colorAssignment(continent)
-		ca.formatInput(nColors)
-		yield {}
-		yield ca.runModule()
-	return generate()
+	continent = request.args["continent"]
+	nColors = request.args["nColors"]
+	ca = colorAssignment(continent)
+	ca.formatInput(nColors)
+	return ca.runModule()
 
 if __name__ == "__main__":
     app.run(debug=True)
