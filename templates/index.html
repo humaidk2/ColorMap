@@ -23,6 +23,7 @@
 		#chartdiv {
 		  width: 100%;
 		  height: 98vh;
+		  background: black;
 		}
 		.container{
 			height: 100%;
@@ -49,22 +50,38 @@
 			display: flex;
 			justify-content: space-around;
 			align-items: center;
-			background: red;
+			background: #fffdd0;
 		}
 		.btn{
 			display: flex;
 		}
+
 		button{
 			width: 60px;
 			height: 50px;
+			border: 1px solid black;
+			border-radius: 5px;
+			background: #01abaa;	
+			color: #fffdd0;
 		}
 		button:hover{
-			background: red;
-			border-color: red;
+			background: yellow;
+			color: black;
+			box-shadow:  5px 5px 5px #aaaaaa;;
+		}
+		.world-btn{
+			width: 100px;
+			height: 80px;
 		}
 		.nColors{
 
 		}
+		.nColorsDiv{
+
+			text-align: center;
+			justify-content: center;
+		}
+
 		/* The Modal (background) */
 		.modal {
 		  display: none; /* Hidden by default */
@@ -138,7 +155,7 @@
 	
 	<div class="container">
 		<div class="component">
-			<div class="header"><h1 class="header1">Please work</h1></div>
+			<div class="header"><h1 class="header1">World Map Coloring</h1></div>
 			<div class="button-list">
 				<div class="btn"><button onclick="getColors(printResponse, 'Asia')">Asia</button></div>
 				<div class="btn"><button onclick="getColors(printResponse, 'Americas')">Americas</button></div>
@@ -148,10 +165,12 @@
 				<div class="btn"><button onclick="getColors(printResponse, 'Americas')">Americas</button></div>
 				<div class="btn"><button onclick="getColors(printResponse, 'Africa')">Africa</button></div>
 				<div class="btn"><button onclick="getColors(printResponse, 'Polar')">Polar</button></div>
-				<div class="btn"><button onclick="getColors(printResponse, 'World')">World</button></div>
+			</div>
+			<div class="button-list">
+				<div class="btn"><button class="world-btn" onclick="getColors(printResponse, 'World')">World</button></div>
 			</div>
 			<div class="nColorsDiv">
-				<label>Num Of Colors<input type="text" id="nColors" name="nColors"></label>
+				<label><h3>Num Of Colors:</h3><input type="text" id="nColors" name="nColors"></label>
 			</div>
 			<div class="statisticsHeader">
 				<h2>Statistics</h2>	
@@ -186,6 +205,28 @@
 	
 	
 	<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', function() {
+		   // your code here
+		   var chart = am4core.create("chartdiv", am4maps.MapChart);
+
+			// Set map definition
+			chart.geodata = am4geodata_worldLow;
+			// Set projection
+			chart.projection = new am4maps.projections.Miller();	
+			// Create map polygon series
+			var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
+			console.log(polygonSeries.mapPolygons.template);
+			// Make map load polygon (like country names) data from GeoJSON
+			polygonSeries.useGeodata = true;
+
+			// Configure series
+			var polygonTemplate = polygonSeries.mapPolygons.template;
+			polygonTemplate.tooltipText = "{name}";
+			polygonTemplate.fill = am4core.color("#01abaa");	
+
+			// Add zoom control
+			chart.zoomControl = new am4maps.ZoomControl();
+		}, false);
 		var modal = document.getElementById("myModal");
 
 		// Get the button that opens the modal
@@ -237,11 +278,11 @@
 			// Configure series
 			var polygonTemplate = polygonSeries.mapPolygons.template;
 			polygonTemplate.tooltipText = "{name}";
-			polygonTemplate.fill = am4core.color("#74B266");
+			polygonTemplate.fill = am4core.color("#01abaa");
 
 			// Create hover state and set alternative fill color
 			var hs = polygonTemplate.states.create("hover");
-			hs.properties.fill = am4core.color("#367B25");
+			hs.properties.fill = am4core.color("#01abaa");
 
 			// Add zoom control
 			chart.zoomControl = new am4maps.ZoomControl();
