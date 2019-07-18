@@ -6,6 +6,8 @@ import json
 # get data on name, region, 3 letter code, neighboring countries
 
 class colorAssignment:
+    def neighborSort(self, elem):
+        return len(elem["borders"])
     def __init__(self, continent):
         self.numOfNodes = 1
         self.numOfNodesDeleted = 0
@@ -24,6 +26,7 @@ class colorAssignment:
             for item in myCountriesDict:
                 if(item['region'] == continent):
                     myCountries.append(item)
+            myCountries.sort(key=self.neighborSort, reverse=False)
             for item in myCountries:
                 self.countriesList.append(item["name"])
                 Neighbors = ""
@@ -35,11 +38,9 @@ class colorAssignment:
                 self.neighbors.append(Neighbors)
                 self.alphaCode.append(item["alpha2Code"])
             self.countries = {}
-
         else:
             print('An error has occurred.')
     
-  
 # format for each country
 #   countries = {"india": { "neighbors": ["pakistan", "bangladesh", "nepal"], "options": ["red", "green", "blue"], "color": 'orange', "isAssigned": True}, "pakistan": {"neighbors": ["india", "bla"], "options": [ "green", "blue"], "isAssigned": False}}
     def formatInput(self, numOfCOlors):
@@ -152,4 +153,9 @@ class colorAssignment:
                 }
             }
         else:
-            return {}
+            return {'stats': {
+                    'numOfNodes': self.numOfNodes,
+                    'numOfNodesDeleted' : self.numOfNodesDeleted,
+                    'numOfTimesBackTracking' : self.numOfTimesBackTracking
+                    }
+                }
