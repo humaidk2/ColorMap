@@ -56,7 +56,7 @@ class colorAssignment:
 
     def searchForCountry(self, countryName):
         for idx, country in enumerate(self.countries):
-            if(country["name"] == countryName or country["name"] == countryName.decode('utf-8')):
+            if(country["name"] == countryName or country["name"].encode('utf-8') == countryName):
                 return idx
 # return false(try anothe color) if theres any conflicts in the assigned colors
 # return false(try anothe color)  if any options are empty(no option available)(conflict)
