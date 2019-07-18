@@ -28,7 +28,7 @@
 		.container{
 			height: 100%;
 			width: 100%;
-			background: white;
+			background: black;
 			display: flex;
 			justify-content: flex-start;
 			align-items: center;
@@ -267,7 +267,7 @@
 			document.getElementById('numOfTimesBackTracking').innerHTML = "Num of Times Back tracking: " + myText.stats.numOfTimesBackTracking;
 			document.getElementById('numOfCountries').innerHTML = "Num of countries: " + myText.stats.numOfCountries;
 			document.getElementById('numOfColors').innerHTML = "Num of Times Colors: " + myText.stats.numOfColors;
-			document.getElementById('isItPossible').innerHTML = "Is it possible with : " + myText.stats.numOfColors + " colors:"  myText.stats.isItPossible;
+			document.getElementById('isItPossible').innerHTML = "Is it possible with : " + myText.stats.numOfColors + " colors:" +  myText.stats.isItPossible;
 			var chart = am4core.create("chartdiv", am4maps.MapChart);
 
 			// Set map definition
