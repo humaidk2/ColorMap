@@ -24,7 +24,7 @@ class colorAssignment:
             self.colors = []
             # filter countries for asian countries
             for item in myCountriesDict:
-                if(item['region'] == continent || continent == "World"):
+                if(item['region'] == continent or continent == "World"):
                     myCountries.append(item)
             myCountries.sort(key=self.neighborSort, reverse=True)
             for item in myCountries:
