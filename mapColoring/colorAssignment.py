@@ -47,7 +47,7 @@ class colorAssignment:
         for idx,country in enumerate(self.countriesList):
             currCountry = {}
             currCountry["name"] = country
-            neighborList = self.neighbors[idx].encode('utf-8').split(",")
+            neighborList = str(self.neighbors[idx]).split(",")
             del neighborList[0]
             currCountry["neighbors"]= neighborList
             currCountry["options"] = [i for i in range(int(numOfCOlors))]
