@@ -28,13 +28,14 @@ class colorAssignment:
                     myCountries.append(item)
             myCountries.sort(key=self.neighborSort, reverse=True)
             for item in myCountries:
-                self.countriesList.append(item["name"])
+                self.countriesList.append(item["name"].replace(",",""))
+                print(item["name"].replace(",",""))
                 Neighbors = ""
                 # merge all  neighbouring countries
                 for elem in myCountries:
                     for border in item["borders"]:
                         if border == elem["alpha3Code"]:
-                            Neighbors = Neighbors + "," + elem["name"]
+                            Neighbors = Neighbors + "," + elem["name"].replace(",","")
                 self.neighbors.append(Neighbors)
                 self.alphaCode.append(item["alpha2Code"])
             self.countries = []
@@ -47,7 +48,7 @@ class colorAssignment:
         for idx,country in enumerate(self.countriesList):
             currCountry = {}
             currCountry["name"] = country
-            neighborList = str(self.neighbors[idx]).split(",")
+            neighborList = self.neighbors[idx].encode('utf-8').split(",")
             del neighborList[0]
             currCountry["neighbors"]= neighborList
             currCountry["options"] = [i for i in range(int(numOfCOlors))]
@@ -56,7 +57,7 @@ class colorAssignment:
 
     def searchForCountry(self, countryName):
         for idx, country in enumerate(self.countries):
-            if(country["name"] == countryName):
+            if(country["name"] == countryName or country["name"] == countryName.decode('utf-8')):
                 return idx
 # return false(try anothe color) if theres any conflicts in the assigned colors
 # return false(try anothe color)  if any options are empty(no option available)(conflict)
