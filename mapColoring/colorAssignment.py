@@ -27,6 +27,7 @@ class colorAssignment:
             for item in myCountriesDict:
                 if(item['region'] == continent or continent == "World"):
                     myCountries.append(item)
+            # Sort countries by most neighbors to optimize backtracking
             myCountries.sort(key=self.neighborSort, reverse=True)
             for item in myCountries:
                 self.countriesList.append(item["name"].replace(",",""))
